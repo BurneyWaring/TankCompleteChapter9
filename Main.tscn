@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Main.gd" type="Script" id=1]
+[ext_resource path="res://Water.gd" type="Script" id=2]
+[ext_resource path="res://Splash.gd" type="Script" id=3]
+[ext_resource path="res://Tank.gd" type="Script" id=4]
+[ext_resource path="res://Plotfunctions.gd" type="Script" id=5]
+[ext_resource path="res://FlowLines.gd" type="Script" id=6]
+
+[node name="Main" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 1026.0
+margin_bottom = 604.0
+
+[node name="Tank" type="Node2D" parent="."]
+script = ExtResource( 4 )
+
+[node name="Plotfunctions" type="Node2D" parent="."]
+script = ExtResource( 5 )
+
+[node name="Water" type="Node2D" parent="."]
+script = ExtResource( 2 )
+
+[node name="plus_water_level" type="Button" parent="."]
+margin_left = 72.0
+margin_top = 527.0
+margin_right = 243.0
+margin_bottom = 571.0
+text = "+water level"
+
+[node name="minus_water_level" type="Button" parent="."]
+margin_left = 308.0
+margin_top = 526.0
+margin_right = 473.0
+margin_bottom = 568.0
+text = "- water level"
+
+[node name="Splash" type="Node2D" parent="."]
+script = ExtResource( 3 )
+
+[node name="FlowLines" type="Node2D" parent="."]
+script = ExtResource( 6 )
+
+[node name="water_level_label" type="Label" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 14.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "test"
+
+[connection signal="pressed" from="plus_water_level" to="." method="_on_plus_water_level_pressed"]
+[connection signal="pressed" from="minus_water_level" to="." method="_on_minus_water_level_pressed"]
